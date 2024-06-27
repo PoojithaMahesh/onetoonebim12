@@ -61,6 +61,8 @@ public class AadharCardDao {
 		if(dbAadharCard!=null) {
 			EntityTransaction entityTransaction=entityManager.getTransaction();
 			entityTransaction.begin();
+			Person person=dbAadharCard.getPerson();
+			person.setAadharCard(null);
 			entityManager.remove(dbAadharCard);
 			entityTransaction.commit();
 			

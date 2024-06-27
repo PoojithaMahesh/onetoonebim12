@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import onetoonebim12.dto.AadharCard;
 import onetoonebim12.dto.Person;
 
 public class PersonDao {
@@ -49,6 +50,8 @@ public void deletePerson(int id) {
 	if(dbPerson!=null) {
 		EntityTransaction entityTransaction=entityManager.getTransaction();
 		entityTransaction.begin();
+		AadharCard aadharCard=dbPerson.getAadharCard();
+		aadharCard.setPerson(null);
 		entityManager.remove(dbPerson);
 		entityTransaction.commit();
 	}else {
